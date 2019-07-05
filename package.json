@@ -1,0 +1,23 @@
+{
+  "name": "taskmaster-frontend",
+  "version": "1.0.0",
+  "description": "taskmaster frontend app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattburger/taskmaster-frontend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mattburger/taskmaster-frontend/issues"
+  },
+  "homepage": "https://github.com/mattburger/taskmaster-frontend#readme",
+  "dependencies": {
+    "start": "^5.1.0"
+  },
+  "devDependencies": {}
+}
