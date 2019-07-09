@@ -9,7 +9,7 @@ function Task() {
   const [tasks, setTask] = useState([]);
 
   const _getTask = () => {
-    // fetch( `${API}, {
+
     fetch( 'http://localhost:5000/tasks', {
       mode:'cors',
     })
@@ -23,7 +23,6 @@ function Task() {
     e.preventDefault();
     let id = e.target.id;
 
-    // fetch( `${API}/${id}`, {
       fetch(`http://localhost:5000/tasks/{id}`, {
       mode:'cors',
       method: 'POST',
@@ -54,7 +53,7 @@ function Task() {
               <span>{task.title}</span>
               <span id={task.id} onClick={_advanceTask}>{task.status}</span>
             </summary>
-            {/* <Details task={task} /> */}
+            <Details task={task} />
           </details>
         </li>
       )}
@@ -62,20 +61,32 @@ function Task() {
   )
 }
 
-// function Details(props) {
-//   let tsk = props.task || [];
-//   return (
-//     <section>
-//       {tsk.map( (item,idx) =>
-//         <div>
-//           <span>{item.description}</span>
-//           <span>{item.assignee}</span>
-//           {/* <span>{item.status}</span> */}
-//         </div>
-//       )}
-//     </section>
-//   )
-// }
+function Details(props) {
+  let tsk = props.task || [];
+  return (
+    <section>
+      <div>
+        <span>{tsk.description}</span>
+        <span>{tsk.assignee}</span>
+        <Form task={tsk} />
+      </div>
+    </section>
+  )
+}
+
+function Form(props) {
+  let tsk = props.task || [];
+  return(
+    <form action='http://localhost:5000/tasks/{id}/images' method="post" encType="multipart/form-data">
+      <label>
+        <span>Upload Image</span>
+        <input type="hidden" name="id" value={tsk.id} />
+        <input name="file" type="file" />
+      </label>
+      <button>upload</button>
+    </form>
+  )
+}
 
 function App() {
   return (
